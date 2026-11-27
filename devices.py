@@ -11,6 +11,9 @@ class Device:
     def status(self):
         return "OK"
 
+    def details(self):
+        return f"{self.name} is located in {self.location}"
+
     def __str__(self):
         return f"{self.name} ({self.location}) - {self.status()}"
 
@@ -27,6 +30,9 @@ class Sensor(Device):
         if self.needs_attention():
             return f"TOO HOT: {self.temperature}C"
         return f"Normal: {self.temperature}C"
+
+    def details(self):
+        return f"{self.name}: {self.temperature}C, limit 30C"
 
 
 class Computer(Device):

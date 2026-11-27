@@ -1,3 +1,7 @@
+import sys
+
+sys.dont_write_bytecode = True  # stop Python creating __pycache__
+
 from devices import Sensor, Computer, Printer
 
 devices = [
@@ -50,13 +54,20 @@ def remove_device():
         print("Invalid number.")
 
 
+def show_summary():
+    total = len(devices)
+    bad = len([d for d in devices if d.needs_attention()])
+    print(f"Total devices: {total} | Need attention: {bad}")
+
+
 while True:
     print("\n--- Campus Device Monitor ---")
     print("1. List all devices")
     print("2. Show devices needing attention")
     print("3. Add a device")
     print("4. Remove a device")
-    print("5. Exit")
+    print("5. Show summary")
+    print("6. Exit")
     choice = input("Choose: ")
 
     if choice == "1":
@@ -68,6 +79,8 @@ while True:
     elif choice == "4":
         remove_device()
     elif choice == "5":
+        show_summary()
+    elif choice == "6":
         print("Goodbye!")
         break
     else:
