@@ -3,6 +3,8 @@ import sys
 sys.dont_write_bytecode = True  # stop Python creating __pycache__
 
 from devices import Sensor, Computer, Printer
+from monitor import DeviceMonitor
+from storage import load_devices, save_devices
 
 devices = [
     Sensor("Server Room Sensor", "Block A", 34),
@@ -10,6 +12,9 @@ devices = [
     Printer("Library Printer", "Library", 8),
     Printer("Office Printer", "Admin", 70),
 ]
+
+monitor = DeviceMonitor(devices)
+monitor.needing_attention()
 
 
 def get_number(prompt):

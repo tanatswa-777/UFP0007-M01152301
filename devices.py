@@ -53,7 +53,7 @@ class Printer(Device):
         self.toner = toner
 
     def needs_attention(self):
-        return self.toner < 15
+        return self.toner_level < 15
 
     def status(self):
         if self.needs_attention():
